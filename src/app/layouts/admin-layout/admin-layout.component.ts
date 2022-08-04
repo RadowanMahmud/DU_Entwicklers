@@ -18,14 +18,14 @@ export class AdminLayoutComponent implements OnInit {
   constructor( public location: Location, private router: Router) {}
 
   ngOnInit() {
-    // if (!localStorage.getItem('isLoggedIn')) {
-    //     this.router.navigateByUrl('login');
-    //   }else{
-    //     var user = JSON.parse( localStorage.getItem('isLoggedIn'));
-    //     if(user){
-    //         this.router.navigateByUrl('dashboard');
-    //     }
-    //   }
+    if (localStorage.getItem('isLoggedIn')) {
+        this.router.navigateByUrl('login');
+      }else{
+        var user = JSON.parse( localStorage.getItem('isLoggedIn'));
+        if(user){
+            this.router.navigateByUrl('dashboard');
+        }
+      }
   }
 
 }
