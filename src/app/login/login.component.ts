@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       (response: any) => {
           if (response) {
               console.log(response)
+              this.router.navigateByUrl('dashboard');
           }
           else {
               console.log("not succeed");
