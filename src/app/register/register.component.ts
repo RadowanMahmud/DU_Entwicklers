@@ -22,15 +22,19 @@ export class RegisterComponent implements OnInit {
   }
   SignUpformModel = this.formbuilder.group({
     email: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
     password: ['', Validators.required],
   });
   signIn(){
     console.log('here')
     var body = {
       "email": this.SignUpformModel.value.email,
+      "firstName": this.SignUpformModel.value.firstName,
+      "lastName": this.SignUpformModel.value.lastName,
       "password": this.SignUpformModel.value.password,
     }
-     this.http.post("http://localhost:8080/signup",body).subscribe(
+     this.http.post("http://localhost:8080/create",body).subscribe(
       (response: any) => {
           if (response) {
               console.log(response)
