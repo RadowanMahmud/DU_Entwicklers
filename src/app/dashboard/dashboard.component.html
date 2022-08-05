@@ -16,14 +16,15 @@
                     <div class="card-body">
                         <form class="navbar-form">
                             <div class="input-group no-border">
-                                <input type="text" value="" class="form-control" placeholder="Search...">
-                                <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                                <input class="form-control" placeholder="Search..." type="text" value="">
+                                <button class="btn btn-white btn-round btn-just-icon" data-target="#searchBox" data-toggle="modal"
+                                        mat-raised-button type="submit">
                                     <i class="material-icons">search</i>
                                     <div class="ripple-container"></div>
                                 </button>
-                                <button mat-raised-button type="submit"
-                                        class="btn btn-white btn-round btn-just-icon ml-1" (click)="startRecord()"
-                                        data-toggle="modal" data-target="#speech">
+                                <button (click)="startRecord()" class="btn btn-white btn-round btn-just-icon ml-1"
+                                        data-target="#speech" data-toggle="modal"
+                                        mat-raised-button type="submit">
                                     <i class="material-icons">mic</i>
                                     <div class="ripple-container"></div>
                                 </button>
@@ -36,8 +37,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header-warning card-header-icon" data-toggle="modal"
-                         data-target="#Newsspeech">
+                    <div (click)="navigetToNews()" class="card-header card-header-warning card-header-icon">
                         <div class="card-icon">
                             <i class="material-icons">content_copy</i>
                         </div>
@@ -53,8 +53,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon" data-toggle="modal"
-                         data-target="#Notespeech">
+                    <div (click)="navigetToNotes()" class="card-header card-header-success card-header-icon">
                         <div class="card-icon">
                             <i class="material-icons">store</i>
                         </div>
@@ -69,8 +68,7 @@
             </div>
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon" data-toggle="modal"
-                         data-target="#Musicspeech">
+                    <div (click)="navigetToMusic()" class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
                             <i class="material-icons">music_note</i>
                         </div>
@@ -86,8 +84,7 @@
 
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header-info card-header-icon" data-toggle="modal"
-                         data-target="#Trafficspeech">
+                    <div (click)="navigetToMaps()" class="card-header card-header-info card-header-icon">
                         <div class="card-icon">
                             <i class="material-icons">traffic</i>
                         </div>
@@ -110,19 +107,19 @@
                                 <span class="nav-tabs-title">Tasks:</span>
                                 <ul class="nav nav-tabs" data-tabs="tabs">
                                     <li class="nav-item">
-                                        <a mat-button class="nav-link active" href="#profile" data-toggle="tab">
+                                        <a class="nav-link active" data-toggle="tab" href="#profile" mat-button>
                                             <i class="material-icons">bug_report</i> News
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a mat-button class="nav-link" href="#messages" data-toggle="tab">
+                                        <a class="nav-link" data-toggle="tab" href="#messages" mat-button>
                                             <i class="material-icons">code</i> Weather
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a mat-button class="nav-link" href="#settings" data-toggle="tab">
+                                        <a class="nav-link" data-toggle="tab" href="#settings" mat-button>
                                             <i class="material-icons">cloud</i> Music
                                             <div class="ripple-container"></div>
                                         </a>
@@ -140,7 +137,7 @@
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                                    <input checked class="form-check-input" type="checkbox" value="">
                                                     <span class="form-check-sign">
                                                           <span class="check"></span>
                                                       </span>
@@ -149,14 +146,14 @@
                                         </td>
                                         <td>Sign contract for "What are conference organizers afraid of?"</td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Edit Task"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Edit Task"
+                                                    type="button">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Remove"
+                                                    type="button">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -174,14 +171,14 @@
                                         </td>
                                         <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Edit Task"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Edit Task"
+                                                    type="button">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Remove"
+                                                    type="button">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -201,14 +198,14 @@
                                             ravaging rain swept through metro Detroit
                                         </td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Edit Task"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Edit Task"
+                                                    type="button">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Remove"
+                                                    type="button">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -217,7 +214,7 @@
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                                    <input checked class="form-check-input" type="checkbox" value="">
                                                     <span class="form-check-sign">
                                                           <span class="check"></span>
                                                       </span>
@@ -226,14 +223,14 @@
                                         </td>
                                         <td>Create 4 Invisible User Experiences you Never Knew About</td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Edit Task"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Edit Task"
+                                                    type="button">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Remove"
+                                                    type="button">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -248,7 +245,7 @@
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                                    <input checked class="form-check-input" type="checkbox" value="">
                                                     <span class="form-check-sign">
                                                           <span class="check"></span>
                                                       </span>
@@ -259,14 +256,14 @@
                                             ravaging rain swept through metro Detroit
                                         </td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Edit Task"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Edit Task"
+                                                    type="button">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Remove"
+                                                    type="button">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -284,14 +281,14 @@
                                         </td>
                                         <td>Sign contract for "What are conference organizers afraid of?"</td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Edit Task"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Edit Task"
+                                                    type="button">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Remove"
+                                                    type="button">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -315,14 +312,14 @@
                                         </td>
                                         <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Edit Task"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Edit Task"
+                                                    type="button">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Remove"
+                                                    type="button">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -331,7 +328,7 @@
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                                    <input checked class="form-check-input" type="checkbox" value="">
                                                     <span class="form-check-sign">
                                                           <span class="check"></span>
                                                       </span>
@@ -342,14 +339,14 @@
                                             ravaging rain swept through metro Detroit
                                         </td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Edit Task"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Edit Task"
+                                                    type="button">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Remove"
+                                                    type="button">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -358,7 +355,7 @@
                                         <td>
                                             <div class="form-check">
                                                 <label class="form-check-label">
-                                                    <input class="form-check-input" type="checkbox" value="" checked>
+                                                    <input checked class="form-check-input" type="checkbox" value="">
                                                     <span class="form-check-sign">
                                                           <span class="check"></span>
                                                       </span>
@@ -367,14 +364,14 @@
                                         </td>
                                         <td>Sign contract for "What are conference organizers afraid of?"</td>
                                         <td class="td-actions text-right">
-                                            <button mat-raised-button type="button" matTooltip="Edit Task"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Edit Task"
+                                                    type="button">
                                                 <i class="material-icons">edit</i>
                                             </button>
-                                            <button mat-raised-button type="button" matTooltip="Remove"
-                                                    [matTooltipPosition]="'above'"
-                                                    class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <button [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon" mat-raised-button
+                                                    matTooltip="Remove"
+                                                    type="button">
                                                 <i class="material-icons">close</i>
                                             </button>
                                         </td>
@@ -389,14 +386,14 @@
         </div>
     </div>
 </div>
-<div class="modal modal-angular fade" id="speech" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div aria-labelledby="myModalLabel" class="modal modal-angular fade" id="speech" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">
                 <div>
                     <div class="example-button-container">
-                        <button mat-fab color="primary" aria-label="Example icon button with a delete icon"
-                                (click)="stopRecord()">
+                        <button (click)="stopRecord()" aria-label="Example icon button with a delete icon" color="primary"
+                                mat-fab>
                             <i class="material-icons">mic</i>
                         </button>
                     </div>
@@ -406,66 +403,15 @@
         </div>
     </div>
 </div>
-<div class="modal modal-angular fade" id="Newsspeech" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+<div aria-labelledby="myModalLabel" class="modal modal-angular fade" id="searchBox" role="dialog" tabindex="-1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">
                 <div>
-                    <div class="example-button-container">
-                        <button mat-fab color="warning" aria-label="Example icon button with a delete icon">
-                            <i class="material-icons">mic</i>
-                        </button>
-                    </div>
+                    The Item you searched for
                 </div>
-                <span>Recording........</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal modal-angular fade" id="Notespeech" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <div>
-                    <div class="example-button-container">
-                        <button mat-fab color="success" aria-label="Example icon button with a delete icon">
-                            <i class="material-icons">mic</i>
-                        </button>
-                    </div>
-                </div>
-                <span>Recording........</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal modal-angular fade" id="Musicspeech" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <div>
-                    <div class="example-button-container">
-                        <button mat-fab color="danger" aria-label="Example icon button with a delete icon">
-                            <i class="material-icons">mic</i>
-                        </button>
-                    </div>
-                </div>
-                <span>Recording........</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal modal-angular fade" id="Trafficspeech" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <div>
-                    <div class="example-button-container">
-                        <button mat-fab color="info" aria-label="Example icon button with a delete icon">
-                            <i class="material-icons">mic</i>
-                        </button>
-                    </div>
-                </div>
-                <span>Recording........</span>
+                <span>Item</span>
             </div>
         </div>
     </div>

@@ -5,7 +5,9 @@ import {AzureService} from '../services/azure.service';
 
 declare var $: any;
 import * as RecordRTC from 'recordrtc';
+
 import {DomSanitizer} from '@angular/platform-browser';
+import {Router, NavigationEnd, NavigationStart} from '@angular/router';
 
 @Component({
     selector: 'app-dashboard',
@@ -25,8 +27,9 @@ export class DashboardComponent implements OnInit {
     audioFile: File;
     audioInText: '';
 
-    constructor(private domSanitizer: DomSanitizer, private azureService: AzureService) {
+    constructor(private domSanitizer: DomSanitizer, private azureService: AzureService, private router: Router) {
     }
+
 
     sanitize(url: string) {
         return this.domSanitizer.bypassSecurityTrustUrl(url);
@@ -80,4 +83,19 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
     }
 
+    navigetToNews() {
+        this.router.navigateByUrl('news');
+    }
+
+    navigetToNotes() {
+        this.router.navigateByUrl('table-list');
+    }
+
+    navigetToMaps() {
+        this.router.navigateByUrl('maps');
+    }
+
+    navigetToMusic() {
+        this.router.navigateByUrl('music');
+    }
 }

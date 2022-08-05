@@ -14,6 +14,8 @@ import { AngularFireAuthModule } from "@angular/fire/compat/auth";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AuthService } from 'shared/services/auth.service';
+import { NewsPageComponent } from './news-page/news-page.component';
+import { MusicPageComponent } from './music-page/music-page.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyB0Fth8cK78Ighu0-e8R9WChWy4TFa5vvI",
@@ -42,7 +44,9 @@ const firebaseConfig = {
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NewsPageComponent,
+    MusicPageComponent
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
