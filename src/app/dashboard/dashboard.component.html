@@ -17,7 +17,7 @@
                       <form class="navbar-form">
                           <div class="input-group no-border">
                               <input type="text" value="" class="form-control" placeholder="Search...">
-                              <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon">
+                              <button mat-raised-button type="submit" class="btn btn-white btn-round btn-just-icon" data-toggle="modal" data-target="#searchBox">
                                   <i class="material-icons">search</i>
                                   <div class="ripple-container"></div>
                               </button>
@@ -34,7 +34,7 @@
       <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
-                  <div class="card-header card-header-warning card-header-icon" data-toggle="modal" data-target="#Newsspeech">
+                  <div class="card-header card-header-warning card-header-icon" (click)="navigetToNews()">
                       <div class="card-icon">
                           <i class="material-icons">content_copy</i>
                       </div>
@@ -50,7 +50,7 @@
           </div>
           <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
-                  <div class="card-header card-header-success card-header-icon" data-toggle="modal" data-target="#Notespeech">
+                  <div class="card-header card-header-success card-header-icon" (click)="navigetToNotes()">
                       <div class="card-icon">
                           <i class="material-icons">store</i>
                       </div>
@@ -65,7 +65,7 @@
           </div>
           <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
-                  <div class="card-header card-header-danger card-header-icon" data-toggle="modal" data-target="#Musicspeech">
+                  <div class="card-header card-header-danger card-header-icon" (click)="navigetToMusic()">
                       <div class="card-icon">
                           <i class="material-icons">music_note</i>
                       </div>
@@ -81,7 +81,7 @@
 
           <div class="col-lg-3 col-md-6 col-sm-6">
               <div class="card card-stats">
-                  <div class="card-header card-header-info card-header-icon" data-toggle="modal" data-target="#Trafficspeech">
+                  <div class="card-header card-header-info card-header-icon" (click)="navigetToMaps()">
                       <div class="card-icon">
                           <i class="material-icons">traffic</i>
                       </div>
@@ -360,66 +360,15 @@
         </div>
     </div>
 </div>
-<div class="modal modal-angular fade" id="Newsspeech" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+<div class="modal modal-angular fade" id="searchBox" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-body text-center">
                 <div>
-                    <div class="example-button-container">
-                        <button mat-fab color="warning" aria-label="Example icon button with a delete icon">
-                            <i class="material-icons">mic</i>
-                        </button>
-                      </div>
+                    The Item you searched for
                 </div>
-                <span>Recording........</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal modal-angular fade" id="Notespeech" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <div>
-                    <div class="example-button-container">
-                        <button mat-fab color="success" aria-label="Example icon button with a delete icon">
-                            <i class="material-icons">mic</i>
-                        </button>
-                      </div>
-                </div>
-                <span>Recording........</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal modal-angular fade" id="Musicspeech" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <div>
-                    <div class="example-button-container">
-                        <button mat-fab color="danger" aria-label="Example icon button with a delete icon">
-                            <i class="material-icons">mic</i>
-                        </button>
-                      </div>
-                </div>
-                <span>Recording........</span>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="modal modal-angular fade" id="Trafficspeech" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body text-center">
-                <div>
-                    <div class="example-button-container">
-                        <button mat-fab color="info" aria-label="Example icon button with a delete icon">
-                            <i class="material-icons">mic</i>
-                        </button>
-                      </div>
-                </div>
-                <span>Recording........</span>
+                <span>Item</span>
             </div>
         </div>
     </div>

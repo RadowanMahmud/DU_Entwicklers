@@ -1,0 +1,81 @@
+<div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title">News</h4>
+              <p class="card-category">Stay Updated with daily Jar News</p>
+              <button
+                mat-raised-button
+                type="submit"
+                class="btn btn-white btn-round btn-just-icon ml-1"
+                (click)="startRecord()"
+                data-toggle="modal"
+                data-target="#speech"
+              >
+                <i class="material-icons">mic</i>
+                <div class="ripple-container"></div>
+              </button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class="text-primary">
+                    <th>News Heading</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Dakota Rice</td>
+                    </tr>
+                    <tr>
+
+                      <td>Minerva Hooper</td>
+
+                    </tr>
+                    <tr>
+
+                      <td>Sage Rodriguez</td>
+
+                    </tr>
+                    <tr>
+
+                      <td>Philip Chaney</td>
+
+                    </tr>
+                    <tr>
+
+                      <td>Doris Greene</td>
+
+                    </tr>
+                    <tr>
+
+                      <td>Mason Porter</td>
+
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal modal-angular fade" id="speech" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <div>
+                    <div class="example-button-container">
+                        <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="stopRecord()">
+                            <i class="material-icons">mic</i>
+                        </button>
+                      </div>
+                </div>
+                <span>Recording........</span>
+            </div>
+        </div>
+    </div>
+</div>

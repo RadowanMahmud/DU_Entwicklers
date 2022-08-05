@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 declare var $: any;
-import * as RecordRTC from 'recordrtc';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Router, NavigationEnd, NavigationStart } from '@angular/router';
+import * as RecordRTC from "recordrtc";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-music-page',
+  templateUrl: './music-page.component.html',
+  styleUrls: ['./music-page.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class MusicPageComponent implements OnInit {
 
-  title = 'micRecorder';
+  title = "micRecorder";
   //Lets declare Record OBJ
   record;
   //Will use this flag for toggeling recording
@@ -20,7 +19,7 @@ export class DashboardComponent implements OnInit {
   url;
   error;
 
-  constructor(private domSanitizer: DomSanitizer, private router: Router) {}
+  constructor(private domSanitizer: DomSanitizer) {}
 
   sanitize(url: string) {
     return this.domSanitizer.bypassSecurityTrustUrl(url);
@@ -30,16 +29,18 @@ export class DashboardComponent implements OnInit {
     this.recording = true;
     let mediaConstraints = {
       video: false,
-      audio: true
+      audio: true,
     };
-    navigator.mediaDevices.getUserMedia(mediaConstraints).then(this.successCallback.bind(this), this.errorCallback.bind(this));
+    navigator.mediaDevices
+      .getUserMedia(mediaConstraints)
+      .then(this.successCallback.bind(this), this.errorCallback.bind(this));
   }
-  
+
   successCallback(stream) {
     var options = {
       mimeType: "audio/wav",
       numberOfAudioChannels: 1,
-      sampleRate: 16000,
+      sampleRate: 44100,
     };
     //Start Actuall Recording
     var StereoAudioRecorder = RecordRTC.StereoAudioRecorder;
@@ -51,7 +52,7 @@ export class DashboardComponent implements OnInit {
     this.recording = false;
     this.record.stop(this.processRecording.bind(this));
   }
- 
+
   processRecording(blob) {
     this.url = URL.createObjectURL(blob);
     console.log("blob", blob);
@@ -59,20 +60,11 @@ export class DashboardComponent implements OnInit {
   }
 
   errorCallback(error) {
-    this.error = 'Can not play audio in your browser';
+    this.error = "Can not play audio in your browser";
   }
-  ngOnInit() {}
 
-  navigetToNews(){
-    this.router.navigateByUrl('news');
+
+  ngOnInit(): void {
   }
-  navigetToNotes(){
-    this.router.navigateByUrl('table-list');
-  }
-  navigetToMaps(){
-    this.router.navigateByUrl('maps');
-  }
-  navigetToMusic(){
-    this.router.navigateByUrl('music');
-  }
+
 }
