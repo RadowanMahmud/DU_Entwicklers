@@ -22,6 +22,8 @@
                   mat-raised-button
                   type="submit"
                   class="btn btn-white btn-round btn-just-icon"
+                  data-toggle="modal"
+                  data-target="#searchBox"
                 >
                   <i class="material-icons">search</i>
                   <div class="ripple-container"></div>
@@ -48,8 +50,7 @@
         <div class="card card-stats">
           <div
             class="card-header card-header-warning card-header-icon"
-            data-toggle="modal"
-            data-target="#Newsspeech"
+            (click)="navigetToNews()"
           >
             <div class="card-icon">
               <i class="material-icons">content_copy</i>
@@ -66,8 +67,7 @@
         <div class="card card-stats">
           <div
             class="card-header card-header-success card-header-icon"
-            data-toggle="modal"
-            data-target="#Notespeech"
+            (click)="navigetToNotes()"
           >
             <div class="card-icon">
               <i class="material-icons">store</i>
@@ -84,8 +84,7 @@
         <div class="card card-stats">
           <div
             class="card-header card-header-danger card-header-icon"
-            data-toggle="modal"
-            data-target="#Musicspeech"
+            (click)="navigetToMusic()"
           >
             <div class="card-icon">
               <i class="material-icons">music_note</i>
@@ -103,8 +102,7 @@
         <div class="card card-stats">
           <div
             class="card-header card-header-info card-header-icon"
-            data-toggle="modal"
-            data-target="#Trafficspeech"
+            (click)="navigetToMaps()"
           >
             <div class="card-icon">
               <i class="material-icons">traffic</i>
@@ -130,7 +128,7 @@
                     <a
                       mat-button
                       class="nav-link active"
-                      href="#profile"
+                      href="#news"
                       data-toggle="tab"
                     >
                       <i class="material-icons">bug_report</i> News
@@ -141,7 +139,7 @@
                     <a
                       mat-button
                       class="nav-link"
-                      href="#messages"
+                      href="#weather"
                       data-toggle="tab"
                     >
                       <i class="material-icons">code</i> Weather
@@ -152,7 +150,7 @@
                     <a
                       mat-button
                       class="nav-link"
-                      href="#settings"
+                      href="#music"
                       data-toggle="tab"
                     >
                       <i class="material-icons">cloud</i> Music
@@ -165,99 +163,35 @@
           </div>
           <div class="card-body">
             <div class="tab-content">
-              <div class="tab-pane active" id="profile">
+              <div class="tab-pane active" id="music">
                 <table class="table">
+                  <thead class="text-primary">
+                    <th>Preview</th>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Play</th>
+                  </thead>
                   <tbody>
-                    <tr>
+                    <tr *ngFor="let element of musicResponse">
                       <td>
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              value=""
-                              checked
-                            />
-                            <span class="form-check-sign">
-                              <span class="check"></span>
-                            </span>
-                          </label>
-                        </div>
+                        <img [src]="element.album.images[2].url" />
                       </td>
                       <td>
-                        Sign contract for "What are conference organizers afraid
-                        of?"
+                        {{ element.album.name }}
                       </td>
-                      <td class="td-actions text-right"></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              value=""
-                            />
-                            <span class="form-check-sign">
-                              <span class="check"></span>
-                            </span>
-                          </label>
-                        </div>
+                      <td class="td-actions text-right">
+                        {{ element.album.artists[0].name }}
                       </td>
-                      <td>
-                        Lines From Great Russian Literature? Or E-mails From My
-                        Boss?
+                      <td
+                        (click)="playMusic(element.album.external_urls.spotify)"
+                      >
+                        <i class="material-icons">play_arrow</i>
                       </td>
-                      <td class="td-actions text-right"></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              value=""
-                            />
-                            <span class="form-check-sign">
-                              <span class="check"></span>
-                            </span>
-                          </label>
-                        </div>
-                      </td>
-                      <td>
-                        Flooded: One year later, assessing what was lost and
-                        what was found when a ravaging rain swept through metro
-                        Detroit
-                      </td>
-                      <td class="td-actions text-right"></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="form-check">
-                          <label class="form-check-label">
-                            <input
-                              class="form-check-input"
-                              type="checkbox"
-                              value=""
-                              checked
-                            />
-                            <span class="form-check-sign">
-                              <span class="check"></span>
-                            </span>
-                          </label>
-                        </div>
-                      </td>
-                      <td>
-                        Create 4 Invisible User Experiences you Never Knew About
-                      </td>
-                      <td class="td-actions text-right"></td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <div class="tab-pane" id="messages">
+              <div class="tab-pane" id="weather">
                 <table class="table">
                   <tbody>
                     <tr>
@@ -281,7 +215,26 @@
                         what was found when a ravaging rain swept through metro
                         Detroit
                       </td>
-                      <td class="td-actions text-right"></td>
+                      <td class="td-actions text-right">
+                        <button
+                          mat-raised-button
+                          type="button"
+                          matTooltip="Edit Task"
+                          [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon"
+                        >
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button
+                          mat-raised-button
+                          type="button"
+                          matTooltip="Remove"
+                          [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon"
+                        >
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -302,12 +255,31 @@
                         Sign contract for "What are conference organizers afraid
                         of?"
                       </td>
-                      <td class="td-actions text-right"></td>
+                      <td class="td-actions text-right">
+                        <button
+                          mat-raised-button
+                          type="button"
+                          matTooltip="Edit Task"
+                          [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon"
+                        >
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button
+                          mat-raised-button
+                          type="button"
+                          matTooltip="Remove"
+                          [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon"
+                        >
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-              <div class="tab-pane" id="settings">
+              <div class="tab-pane" id="news">
                 <table class="table">
                   <tbody>
                     <tr>
@@ -329,7 +301,26 @@
                         Lines From Great Russian Literature? Or E-mails From My
                         Boss?
                       </td>
-                      <td class="td-actions text-right"></td>
+                      <td class="td-actions text-right">
+                        <button
+                          mat-raised-button
+                          type="button"
+                          matTooltip="Edit Task"
+                          [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon"
+                        >
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button
+                          mat-raised-button
+                          type="button"
+                          matTooltip="Remove"
+                          [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon"
+                        >
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -352,7 +343,26 @@
                         what was found when a ravaging rain swept through metro
                         Detroit
                       </td>
-                      <td class="td-actions text-right"></td>
+                      <td class="td-actions text-right">
+                        <button
+                          mat-raised-button
+                          type="button"
+                          matTooltip="Edit Task"
+                          [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon"
+                        >
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button
+                          mat-raised-button
+                          type="button"
+                          matTooltip="Remove"
+                          [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon"
+                        >
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
                     </tr>
                     <tr>
                       <td>
@@ -374,7 +384,26 @@
                         Sign contract for "What are conference organizers afraid
                         of?"
                       </td>
-                      <td class="td-actions text-right"></td>
+                      <td class="td-actions text-right">
+                        <button
+                          mat-raised-button
+                          type="button"
+                          matTooltip="Edit Task"
+                          [matTooltipPosition]="'above'"
+                          class="btn btn-primary btn-link btn-sm btn-just-icon"
+                        >
+                          <i class="material-icons">edit</i>
+                        </button>
+                        <button
+                          mat-raised-button
+                          type="button"
+                          matTooltip="Remove"
+                          [matTooltipPosition]="'above'"
+                          class="btn btn-danger btn-link btn-sm btn-just-icon"
+                        >
+                          <i class="material-icons">close</i>
+                        </button>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -413,9 +442,10 @@
     </div>
   </div>
 </div>
+
 <div
   class="modal modal-angular fade"
-  id="Newsspeech"
+  id="searchBox"
   tabindex="-1"
   role="dialog"
   aria-labelledby="myModalLabel"
@@ -423,96 +453,8 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body text-center">
-        <div>
-          <div class="example-button-container">
-            <button
-              mat-fab
-              color="warning"
-              aria-label="Example icon button with a delete icon"
-            >
-              <i class="material-icons">mic</i>
-            </button>
-          </div>
-        </div>
-        <span>Recording........</span>
-      </div>
-    </div>
-  </div>
-</div>
-<div
-  class="modal modal-angular fade"
-  id="Notespeech"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myModalLabel"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <div>
-          <div class="example-button-container">
-            <button
-              mat-fab
-              color="success"
-              aria-label="Example icon button with a delete icon"
-            >
-              <i class="material-icons">mic</i>
-            </button>
-          </div>
-        </div>
-        <span>Recording........</span>
-      </div>
-    </div>
-  </div>
-</div>
-<div
-  class="modal modal-angular fade"
-  id="Musicspeech"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myModalLabel"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <div>
-          <div class="example-button-container">
-            <button
-              mat-fab
-              color="danger"
-              aria-label="Example icon button with a delete icon"
-            >
-              <i class="material-icons">mic</i>
-            </button>
-          </div>
-        </div>
-        <span>Recording........</span>
-      </div>
-    </div>
-  </div>
-</div>
-<div
-  class="modal modal-angular fade"
-  id="Trafficspeech"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="myModalLabel"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body text-center">
-        <div>
-          <div class="example-button-container">
-            <button
-              mat-fab
-              color="info"
-              aria-label="Example icon button with a delete icon"
-            >
-              <i class="material-icons">mic</i>
-            </button>
-          </div>
-        </div>
-        <span>Recording........</span>
+        <div>The Item you searched for</div>
+        <span>Item</span>
       </div>
     </div>
   </div>

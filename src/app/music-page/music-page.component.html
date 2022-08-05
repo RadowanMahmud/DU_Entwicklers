@@ -1,0 +1,83 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Music</h4>
+            <p class="card-category">listen to the best tracks</p>
+            <button
+              mat-raised-button
+              type="submit"
+              class="btn btn-white btn-round btn-just-icon ml-1"
+              (click)="startRecord()"
+              data-toggle="modal"
+              data-target="#speech"
+            >
+              <i class="material-icons">mic</i>
+              <div class="ripple-container"></div>
+            </button>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="text-primary">
+                  <th>Preview</th>
+                  <th>Title</th>
+                  <th>Artist</th>
+                  <th>Play</th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let element of musicResponse">
+                    <td>
+                      <img [src]="element.album.images[2].url" />
+                    </td>
+                    <td>
+                      {{ element.album.name }}
+                    </td>
+                    <td class="td-actions text-right">
+                      {{ element.album.artists[0].name }}
+                    </td>
+                    <td
+                      (click)="playMusic(element.album.external_urls.spotify)"
+                    >
+                      <i class="material-icons">play_arrow</i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal modal-angular fade"
+  id="speech"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <div>
+          <div class="example-button-container">
+            <button
+              mat-fab
+              color="primary"
+              aria-label="Example icon button with a delete icon"
+              (click)="stopRecord()"
+            >
+              <i class="material-icons">mic</i>
+            </button>
+          </div>
+        </div>
+        <span>Recording........</span>
+      </div>
+    </div>
+  </div>
+</div>
