@@ -17,7 +17,8 @@
                         <form class="navbar-form">
                             <div class="input-group no-border">
                                 <input class="form-control" placeholder="Search..." type="text" value="">
-                                <button class="btn btn-white btn-round btn-just-icon" data-target="#searchBox" data-toggle="modal"
+                                <button class="btn btn-white btn-round btn-just-icon" 
+                                (click)="search()"
                                         mat-raised-button type="submit">
                                     <i class="material-icons">search</i>
                                     <div class="ripple-container"></div>

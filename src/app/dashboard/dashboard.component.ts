@@ -27,7 +27,7 @@ export class DashboardComponent implements OnInit {
     audioFile: File;
     audioInText: '';
 
-    constructor(private domSanitizer: DomSanitizer, private azureService: AzureService, private router: Router) {
+    constructor(private http: HttpClient,private domSanitizer: DomSanitizer, private azureService: AzureService, private router: Router) {
     }
 
 
@@ -97,5 +97,14 @@ export class DashboardComponent implements OnInit {
 
     navigetToMusic() {
         this.router.navigateByUrl('music');
+    }
+    search(){
+      if(this.audioInText){
+        this.http.get('http://localhost:8080/searchNews?query='+encodeURI(this.audioInText)).subscribe(
+          res =>{
+            console.log(res)
+          }
+        )
+      }
     }
 }
