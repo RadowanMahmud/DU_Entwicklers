@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {HttpHeaders} from '@angular/common/http';
+import {AzureService} from '../services/azure.service';
 
 declare var $: any;
 import * as RecordRTC from 'recordrtc';
@@ -24,7 +25,7 @@ export class DashboardComponent implements OnInit {
     audioFile: File;
     audioInText: '';
 
-    constructor(private domSanitizer: DomSanitizer, private http: HttpClient) {
+    constructor(private domSanitizer: DomSanitizer, private azureService: AzureService) {
     }
 
     sanitize(url: string) {
@@ -66,16 +67,8 @@ export class DashboardComponent implements OnInit {
     }
 
     makeStructureForApi() {
-        const headers = new HttpHeaders()
-            .set('content-type', 'audio/wav')
-            .set('Accept', '*/*')
-            .set('Ocp-Apim-Subscription-Key', '640c875c440440abb2947b30bbd36940')
-            .set('Access-Control-Allow-Headers', 'Content-Type')
-            .set('Access-Control-Allow-Origin', '*');
-
-        const azure_url = 'https://southeastasia.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US';
-        this.http.post(azure_url, this.audioFile, {'headers': headers}).subscribe((res: any) => {
-            this.audioInText = res.DisplayText;
+        this.azureService.azureSpeechToTextService(this.audioFile).subscribe((response: any) => {
+            this.audioInText = response.DisplayText;
             console.log(this.audioInText);
         });
     }

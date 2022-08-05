@@ -36,6 +36,10 @@ export class AuthService {
         });
     }
 
+    get isLoggedIn(): boolean {
+        const user = JSON.parse(localStorage.getItem('isLoggedIn')!);
+        return user !== null && user.emailVerified !== false ? true : false;
+    }
 
     // Sign in with email/password
     SignIn(email: string, password: string) {
@@ -48,11 +52,6 @@ export class AuthService {
             .catch((error) => {
                 window.alert(error.message);
             });
-    }
-
-    get isLoggedIn(): boolean {
-        const user = JSON.parse(localStorage.getItem('isLoggedIn')!);
-        return user !== null && user.emailVerified !== false ? true : false;
     }
 
     // Sign in with Google
@@ -95,6 +94,19 @@ export class AuthService {
             merge: true,
         });
     }
+
+    addUsersNoteToFirebase(note: any, user: any) {
+        const noteCollection = this.afs.collection<any>('notes');
+        const noteDoc = {
+            uid: user.uid,
+            email: user.email,
+            time: new Date(),
+            note: note,
+        }
+        return noteCollection.add(noteDoc).then(res => {
+            console.log('Successfully Added Note');
+        });
+    };
 
     // Sign out
     SignOut() {
